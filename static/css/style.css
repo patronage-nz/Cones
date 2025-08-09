@@ -1,0 +1,487 @@
+/* static/css/style.css */
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #111;
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+}
+
+/* Header */
+.site-header {
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 24px;
+  margin-right: 0.5rem;
+}
+
+/* Header: replace cone emoji with image */
+.site-header nav a.nav-cone-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  line-height: 1;
+}
+
+/* Size and behaviour of the cone image */
+.site-header nav a.nav-cone-link .nav-cone {
+  height: 20px;
+  width: auto;
+  display: block;
+}
+
+/* Slightly larger on wider screens to match original nav sizing */
+@media (min-width: 600px) {
+  .site-header nav a.nav-cone-link .nav-cone {
+    height: 24px;
+  }
+}
+
+/* Maintain hover affordance (same as other links) */
+.site-header nav a.nav-cone-link:hover,
+.site-header nav a.nav-cone-link:focus {
+  outline: none;
+}
+
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.125rem;
+  color: #555;
+}
+
+/* Intro Section */
+.intro {
+  padding: 2rem 1rem;
+}
+
+.intro-logo {
+  display: block;
+  max-width: 200px;
+  margin: 0 auto 1rem;
+}
+
+.intro h2 {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.intro p {
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Stats Section */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item strong {
+  display: block;
+  /* font-size: 1.5rem; */
+  font-weight: 700;
+}
+
+.countdown #countdown {
+  /* font-size: 1.5rem; */
+  font-weight: 600;
+}
+
+/* Mailing List Section */
+.mailing-list {
+  padding: 2rem 1rem;
+}
+
+.mailing-list h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#mailing-list-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#mailing-list-form label {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+#mailing-list-form input[type="email"] {
+  padding: 0.75rem;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#mailing-list-form button {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #111;
+  background-color: #111;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+#mailing-list-form button:hover {
+  background-color: #000;
+}
+
+/* CTA Section */
+.cta {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.btn-explore {
+  display: inline-flex;
+  padding: 0.75rem 2rem;
+  border: 2px solid #111;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Cone icon inside the Explore button */
+.btn-cone-icon {
+  height: 16px;
+  width: auto;
+  display: block;
+  transform-origin: center;
+  transition: transform 0.12s ease;
+}
+
+/* Slightly larger icon on wider screens */
+@media (min-width: 600px) {
+  .btn-cone-icon {
+    height: 18px;
+  }
+}
+
+/* Small hover pop for the icon to match button hover */
+.btn-explore:hover .btn-cone-icon,
+.btn-explore:focus .btn-cone-icon {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.btn-explore:hover {
+  background-color: #111;
+  color: #fff;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid #eee;
+  padding: 1rem 0;
+  text-align: center;
+  color: #777;
+  font-size: 0.875rem;
+}
+
+/* Index map (replaces the large homepage logo) */
+#index-map {
+  width: 100%;
+  height: 360px; /* main visible height — change to 420px for larger */
+  border-radius: 6px;
+  margin: 0 auto 1rem;
+  overflow: hidden;
+  border: 1px solid #eee;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+}
+
+/* Slightly taller map on larger screens */
+@media (min-width: 900px) {
+  #index-map {
+    height: 420px;
+  }
+}
+
+/* If map has the placeholder text, center it nicely */
+#index-map > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+
+/* ------------------------------------------------------------------
+   Individual Cone Page Overrides
+   ------------------------------------------------------------------ */
+.cone-page {
+  padding: 2rem 1rem;
+}
+
+/* Header */
+.cone-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.cone-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.cone-header h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.cone-header .cone-origin {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Map Section */
+.cone-map {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Generic Button Styles */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  border: 2px solid #111;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #111;
+}
+
+.btn-outline:hover {
+  background-color: #111;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #111;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #000;
+}
+
+/* Update Section */
+.cone-update {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.cone-update p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+/* Divider */
+.section-divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 2rem 0;
+}
+
+/* Patronage Footer */
+.patronage-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.with-patronage-logo {
+  max-width: 180px;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+/* Mailing List in Footer */
+.patronage-footer .mailing-list {
+  margin-top: 1rem;
+}
+
+.patronage-footer .input-group {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.patronage-footer .input-group input[type="email"] {
+  flex: 1 1 240px;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.patronage-footer .input-group button {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #111;
+  border-radius: 4px;
+  background-color: #111;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.patronage-footer .input-group button:hover {
+  background-color: #000;
+}
+
+/* Responsive tweaks */
+@media (min-width: 600px) {
+  .patronage-footer .input-group {
+    flex-wrap: nowrap;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Leaflet JS Stylisation
+   ------------------------------------------------------------------ */
+
+#map {
+  width: 100%;
+  height: 300px;
+  /* adjust as you like */
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+
+/* ------------------------------------------------------------------
+   Cones directory page styles
+   ------------------------------------------------------------------ */
+.cones-list-page {
+  padding: 2rem 1rem;
+}
+
+.cones-list .cones-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Two-column grid on wider viewports */
+@media (min-width: 600px) {
+  .cones-list .cones-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cone-item {
+  border: 1px solid #eee;
+  padding: 0.75rem;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: box-shadow 0.12s, transform 0.08s;
+}
+
+.cone-item:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.cone-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+  /* aligns with .container bold behavior */
+}
+
+.cone-number {
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+}
+
+.cone-meta {
+  font-size: 0.95rem;
+  color: #555;
+}

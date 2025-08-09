@@ -1,0 +1,58 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero container">
+  <h1>Patronage: Art for all, for artists.</h1>
+  <p>We're empowering artists and connecting art lovers.</p>
+</section>
+
+<section class="intro container">
+  <!-- INDEX MAP  -->
+  <div id="index-map" aria-label="Map of cones"></div>
+
+  <h2>You've Walked Past Me So Many Times</h2>
+  <p>Our debut 'with artist' guerilla installation, 100 traffic cones abandoned across Auckland's berms, alleyways, and gutters - are reclaimed as art in Te Komititanga Square. These symbols of city mismanagement, endless construction, and waste each tell a story of urban neglect and creative rebirth. Scan the QR codes to uncover their forgotten origins and update their locations. Live for 24 hours, this showcase exposes urban realities and proves the power of community and creative action.</p>
+</section>
+
+<!-- Inject cone data for the index map -->
+<script>
+  window.INDEX_CONES = {{ cones_for_map | tojson }};
+</script>
+
+<!-- Load the index map script (relies on Leaflet already included in base.html) -->
+<script src="{{ url_for('static', filename='js/index_map.js') }}"></script>
+
+<section class="stats container">
+  <div class="stat-item">
+    <strong>100 cones</strong>
+  </div>
+  <div class="stat-item">
+    <strong>24 Hours</strong>
+  </div>
+  <div class="stat-item countdown">
+    <div id="countdown"></div>
+  </div>
+</section>
+
+<section class="mailing-list container">
+  <h2>Join The Movement</h2>
+  <form id="mailing-list-form" action="/subscribe" method="POST">
+    <label for="email">art for all, for artists</label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    <button type="submit">Join the movement</button>
+  </form>
+</section>
+
+<section class="cta container">
+  <a href="/cones" class="btn-explore">
+    <span>Explore the cones</span>
+    <img
+      src="{{ url_for('static', filename='images/traffic_cone.png') }}"
+      alt=""
+      aria-hidden="true"
+      class="btn-cone-icon"
+    >
+  </a>
+</section>
+{% endblock %}

@@ -1,0 +1,64 @@
+{# templates/cone.html #}
+{% extends "base.html" %}
+
+{% block content %}
+    <script>
+        window.UPDATE_URL = "{{ url_for('update_cone', cone_id=cone_id) }}";
+        window.CONE_ID = {{ cone_id }};
+        window.CONE_PATH  = {{ cone | tojson }};
+    </script>
+  <div class="container cone-page">
+    <!-- Title & Subtitle -->
+    <section class="cone-header">
+      <h1>You've Walked Past Me So Many Times</h1>
+      <h2>Cone {{ cone_id + 1 }}/100</h2>
+      <p class="cone-origin">
+        {# Derive original location type in your back end or JS if you like; placeholder for now #}
+        I was abandoned, but now I'm found.
+      </p>
+    </section>
+
+    <!-- Interactive Map (stubbed) -->
+    <section class="cone-map">
+      <div id="map" style="height: 400px;"></div>
+        <button class="btn btn-outline" id="take-me-home">
+          DIRECTIONS HOME
+        </button>
+      </section>
+
+    <!-- Update Location CTA -->
+    <section class="cone-update">
+      <p>Found me?</p>
+      <button class="btn btn-primary" id="update-location">
+        UPDATE MY LOCATION
+      </button>
+    </section>
+
+    <!-- Divider -->
+    <hr class="section-divider">
+
+    <!-- Mailing List / Patronage Branding -->
+    <section class="patronage-footer">
+      <img
+        src="{{ url_for('static', filename='images/withpatronage.png') }}"
+        alt="with patronage"
+        class="with-patronage-logo"
+      >
+      <form action="/subscribe" method="POST" class="mailing-list">
+        <label for="email">art for all, for artists</label>
+        <div class="input-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+          >
+          <button type="submit">Join the Movement</button>
+        </div>
+      </form>
+    </section>
+  </div>
+  <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patronage</title>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Patronage logo">
+        <span>Patronage - Home</span>
+      </a>
+      <nav>
+        <a href="/" class="nav-cone-link" aria-label="Explore cones">
+          <img src="{{ url_for('static', filename='images/traffic_cone.png') }}"
+              alt="Traffic cone"
+              class="nav-cone">
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Patronage.nz</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+    <!-- Pass finish_time to JS if available -->
+    {% if finish_time is defined %}
+    <script>
+      window.finishTime = {{ finish_time }};
+    </script>
+    {% endif %}
+  <script src="{{ url_for('static', filename='js/countdown.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

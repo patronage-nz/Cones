@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container cones-list-page">
+  <header class="cones-list-header" style="text-align:center; margin-bottom:1.5rem;">
+    <h1>Explore the cones</h1>
+    <p>Click a cone to view its journey.</p>
+  </header>
+
+  <section class="cones-list">
+    {% if cones and cones|length > 0 %}
+      <ul class="cones-grid">
+        {% for cone in cones %}
+          <li class="cone-item">
+            <a href="{{ url_for('show_cone', cone_id=cone.id) }}" class="cone-link">
+              <div class="cone-number">Cone {{ cone.display_id }}</div>
+              <div class="cone-meta">Last update: <span class="cone-time">{{ cone.last_update }}</span></div>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="muted" style="text-align:center; color:#555;">No cones found.</p>
+    {% endif %}
+  </section>
+</section>
+{% endblock %}
