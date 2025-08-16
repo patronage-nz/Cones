@@ -4,7 +4,7 @@ from datetime import datetime
 import json 
 
 APP = Flask(__name__)
-CONFIG_PATH: str = "config.json"
+CONFIG_PATH: str = "/home/patronagenz/Cones/config.json"
 CONFIG_DATA = None
 with open(CONFIG_PATH, 'r') as configf:
     CONFIG_DATA = json.load(configf)
