@@ -49,6 +49,23 @@ class Repository:
         return all_data
     
 
+    def __handle_entry(self, entry) -> dict:
+        try:
+            update = float(entry.get("timestamp"))
+        except (ValueError, TypeError, AttributeError):
+            update = None
+        # Attempt to parse lat/long as floats
+        try:
+            lat = float(entry.get("lat"))
+        except (TypeError, ValueError):
+            lat = None
+        try:
+            long = float(entry.get("long"))
+        except (TypeError, ValueError):
+            long = None
+        return {"update": update, "lat": lat, "long": long}
+        
+
     def list_cones(self):
         """
         Return a list of cones available in the cone_data_dir.
@@ -70,29 +87,16 @@ class Repository:
                 cone_id = int(name)
                 data = self.load_cone(cone_id)
                 # last update is the timestamp of the last entry, if any
-                last_update = None
-                last_lat = None
-                last_long = None
                 if data and isinstance(data, list) and len(data) > 0:
-                    last_entry = data[-1]
-                    try:
-                        last_update = float(last_entry.get("timestamp"))
-                    except (ValueError, TypeError, AttributeError):
-                        last_update = None
-                    # Attempt to parse lat/long as floats
-                    try:
-                        last_lat = float(last_entry.get("lat"))
-                    except (TypeError, ValueError):
-                        last_lat = None
-                    try:
-                        last_long = float(last_entry.get("long"))
-                    except (TypeError, ValueError):
-                        last_long = None
+                    first_entry_data = self.__handle_entry(data[0])
+                    last_entry_data = self.__handle_entry(data[-1])
                 cones.append({
                     "id": cone_id,
-                    "last_update": last_update,
-                    "last_lat": last_lat,
-                    "last_long": last_long
+                    "last_update": last_entry_data["update"],
+                    "last_lat": last_entry_data["lat"],
+                    "last_long": last_entry_data["long"],
+                    "first_lat": first_entry_data["lat"],
+                    "first_long": first_entry_data["long"]
                 })
         except FileNotFoundError:
             # directory missing — return empty list
@@ -100,6 +104,59 @@ class Repository:
         # sort by id for predictable ordering
         cones.sort(key=lambda x: x["id"])
         return cones
+
+
+    # def list_cones(self):
+    #     """
+    #     Return a list of cones available in the cone_data_dir.
+    #     Each item is a dict:
+    #       {
+    #         "id": int,
+    #         "last_update": float | None,
+    #         "last_lat": float | None,
+    #         "last_long": float | None
+    #       }
+    #     Files that are not numeric names are ignored.
+    #     """
+    #     cones = []
+    #     try:
+    #         for name in os.listdir(self._cone_data_dir):
+    #             # Only consider files that are numeric (cone IDs)
+    #             if not name.isdigit():
+    #                 continue
+    #             cone_id = int(name)
+    #             data = self.load_cone(cone_id)
+    #             # last update is the timestamp of the last entry, if any
+    #             last_update = None
+    #             last_lat = None
+    #             last_long = None
+    #             if data and isinstance(data, list) and len(data) > 0:
+    #                 last_entry = data[-1]
+    #                 try:
+    #                     last_update = float(last_entry.get("timestamp"))
+    #                 except (ValueError, TypeError, AttributeError):
+    #                     last_update = None
+    #                 # Attempt to parse lat/long as floats
+    #                 try:
+    #                     last_lat = float(last_entry.get("lat"))
+    #                 except (TypeError, ValueError):
+    #                     last_lat = None
+    #                 try:
+    #                     last_long = float(last_entry.get("long"))
+    #                 except (TypeError, ValueError):
+    #                     last_long = None
+    #             cones.append({
+    #                 "id": cone_id,
+    #                 "last_update": last_update,
+    #                 "last_lat": last_lat,
+    #                 "last_long": last_long
+    #             })
+    #     except FileNotFoundError:
+    #         # directory missing — return empty list
+    #         return []
+    #     # sort by id for predictable ordering
+    #     cones.sort(key=lambda x: x["id"])
+    #     return cones
 
 
     def update_cone(self, cone_id: str | int, lat: str, long: str, ip: str) -> bool:

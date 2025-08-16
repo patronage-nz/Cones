@@ -53,6 +53,13 @@ button {
 .logo img {
   height: 24px;
   margin-right: 0.5rem;
+  margin-left: 1.0rem;
+}
+
+.site-header .nav-ig-icon {
+  height: 30px;
+  width: auto;
+  margin-right: 0.5rem;
 }
 
 /* Header: replace cone emoji with image */
@@ -66,10 +73,11 @@ button {
 
 /* Size and behaviour of the cone image */
 .site-header nav a.nav-cone-link .nav-cone {
-  height: 20px;
+  height: 30px;
   width: auto;
   display: block;
 }
+
 
 /* Slightly larger on wider screens to match original nav sizing */
 @media (min-width: 600px) {
@@ -241,15 +249,6 @@ button {
 .btn-explore:hover {
   background-color: #111;
   color: #fff;
-}
-
-/* Footer */
-.site-footer {
-  border-top: 1px solid #eee;
-  padding: 1rem 0;
-  text-align: center;
-  color: #777;
-  font-size: 0.875rem;
 }
 
 /* Index map (replaces the large homepage logo) */
@@ -484,4 +483,60 @@ button {
 .cone-meta {
   font-size: 0.95rem;
   color: #555;
+}
+
+/* ------------------------------------------------------------------
+   Footer: sponsor layout and styling
+   ------------------------------------------------------------------ */
+.site-footer .footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* left side (copyright) */
+.site-footer .footer-left p {
+  margin: 0;
+  color: #777;
+  font-size: 0.875rem;
+}
+
+/* right side (sponsor) */
+.site-footer .footer-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* sponsored text */
+.site-footer .sponsored-text {
+  color: #555;
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* hireace logo sizing */
+.site-footer .hireace-logo {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
+/* larger logo on bigger screens */
+@media (min-width: 600px) {
+  .site-footer .hireace-logo {
+    height: 28px;
+  }
+}
+
+/* ensure the sponsor link is visually stable on hover */
+.site-footer .hireace-link:hover .hireace-logo,
+.site-footer .hireace-link:focus .hireace-logo {
+  transform: translateY(-2px);
+  transition: transform 120ms ease;
 }

@@ -1,6 +1,7 @@
 <!-- templates/base.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
+
 <body>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <header class="site-header">
@@ -18,11 +20,14 @@
         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Patronage logo">
         <span>Patronage - Home</span>
       </a>
-      <nav>
+      <nav class="header-icons">
         <a href="/" class="nav-cone-link" aria-label="Explore cones">
-          <img src="{{ url_for('static', filename='images/traffic_cone.png') }}"
-              alt="Traffic cone"
-              class="nav-cone">
+          <img src="{{ url_for('static', filename='images/traffic_cone.png') }}" alt="Traffic cone" class="nav-cone">
+        </a>
+
+        <a href="https://www.instagram.com/patronage.nz/" class="nav-ig-link" target="_blank" rel="noopener noreferrer"
+          aria-label="Patronage Instagram">
+          <img src="{{ url_for('static', filename='images/Instagram_Glyph_Black.png') }}" alt="Instagram" class="nav-ig-icon">
         </a>
       </nav>
     </div>
@@ -33,19 +38,30 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025 Patronage.nz</p>
+    <div class="container footer-content">
+      <div class="footer-left">
+        <p>&copy; 2025 Patronage.nz</p>
+      </div>
+
+      <div class="footer-right">
+        <span class="sponsored-text">Transport sponsored by</span>
+        <a href="https://www.hireace.co.nz" class="hireace-link" target="_blank" rel="noopener noreferrer"
+          aria-label="Hireace">
+          <img src="{{ url_for('static', filename='images/hireace_logo.png') }}" alt="Hireace logo"
+            class="hireace-logo">
+        </a>
+      </div>
     </div>
   </footer>
 
   <!-- Scripts -->
-    <!-- Pass finish_time to JS if available -->
-    {% if finish_time is defined %}
-    <script>
-      window.finishTime = {{ finish_time }};
-    </script>
-    {% endif %}
+  <!-- Pass finish_time to JS if available -->
+  {% if finish_time is defined %}
+  <script>
+    window.finishTime = {{ finish_time }};
+  </script>
+  {% endif %}
   <script src="{{ url_for('static', filename='js/countdown.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
+
 </html>

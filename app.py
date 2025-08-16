@@ -27,9 +27,7 @@ REPO = Repository(
 
 @APP.route('/')
 def index():
-    # fetch cones and prepare a JS-friendly list for the index map
     raw_cones = REPO.list_cones()  # each has id, last_update (float|None), last_lat, last_long
-
     cones_for_map = []
     for c in raw_cones:
         last_ts = c.get("last_update")
@@ -42,8 +40,10 @@ def index():
             "display_id": c["id"] + 1,
             "last_update_ts": last_ts,
             "last_update": last_str,
-            "lat": c.get("last_lat"),
-            "long": c.get("last_long")
+            "last_lat": c.get("last_lat"),
+            "last_long": c.get("last_long"),
+            "first_lat": c.get("first_lat"),
+            "first_long": c.get("first_long")
         })
     return render_template('index.html', finish_time=CONFIG_DATA["finish_time"], cones_for_map=cones_for_map)
 
