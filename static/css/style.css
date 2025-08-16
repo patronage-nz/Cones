@@ -540,3 +540,30 @@ button {
   transform: translateY(-2px);
   transition: transform 120ms ease;
 }
+
+/* ------------------------------------------------------------------
+   Final tweak to index style
+   ------------------------------------------------------------------ */
+.with-patronage.container {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+#index_withpatronage_logo.index-withpatronage-img {
+  display: inline-block;
+  max-width: 260px;     /* maximum pixel width on wide screens */
+  width: 60%;           /* responsive width on small screens */
+  height: auto;
+  margin: 0.5rem auto 1.25rem auto; /* top/bottom spacing to separate sections */
+  filter: none;         /* placeholder: change to e.g. 'opacity(.95)' if desired */
+}
+
+/* Slightly larger on medium+ screens for visual balance */
+@media (min-width: 600px) {
+  #index_withpatronage_logo.index-withpatronage-img {
+    max-width: 320px;
+    width: 50%;
+    margin-top: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+}
