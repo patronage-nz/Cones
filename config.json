@@ -1,10 +1,10 @@
 {
-    "prod_cone_data_dir": "/home/Patronagenz/Cones/cone_data",
-    "test_cone_data_dir": "/home/Patronagenz/Cones/test_data",
+    "prod_cone_data_dir": "/home/patronagenz/Cones/cone_data",
+    "test_cone_data_dir": "/home/patronagenz/Cones/test_data",
     "cone_data_delimiter": "|",
     "finish_time": 1755532800,
     "update_time_limit_minutes": 5,
-    "mailing_list_loc": "/home/Patronagenz/Cones/mailing_list.csv",
+    "mailing_list_loc": "/home/patronagenz/Cones/mailing_list.csv",
     "mailing_list_time_limit_minutes": 1,
     "test_switch": false
 }
