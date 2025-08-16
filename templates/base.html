@@ -37,27 +37,6 @@
     {% block content %}{% endblock %}
   </main>
 
- <!-- Mailing List / Patronage Branding -->
-    <section class="patronage-footer">
-      <img
-        src="{{ url_for('static', filename='images/withpatronage.png') }}"
-        alt="with patronage"
-        class="with-patronage-logo"
-      >
-      <form action="/subscribe" method="POST" class="mailing-list">
-        <label for="email">art for all, for artists</label>
-        <div class="input-group">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="you@example.com"
-            required
-          >
-          <button type="submit">Join the Movement</button>
-        </div>
-      </form>
-    </section>
 
 
   <footer class="site-footer">
